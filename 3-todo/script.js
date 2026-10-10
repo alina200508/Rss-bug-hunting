@@ -41,7 +41,13 @@ function clearCompleted() {
 }
 
 function getVisibleTasks() {
-  return tasks;
+  let visibleTasks = tasks;
+  if (currentFilter === "active") {
+    visibleTasks = tasks.filter((t) => t.done !== true);
+  } else if (currentFilter === "done") {
+    visibleTasks = tasks.filter((t) => t.done === true);
+  }
+  return visibleTasks;
 }
 
 function updateCounter() {
@@ -89,6 +95,8 @@ filterButtons.forEach((btn) => {
     filterButtons.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     currentFilter = btn.dataset.filter;
+    console.log(currentFilter);
+   
     render();
   });
 });
