@@ -16,7 +16,6 @@ function addTask() {
 
   if (text.trim()) {
     tasks.push({ id: nextId++, text: text, done: false });
-    
   } else {
     errorEl.hidden = false;
   }
@@ -27,7 +26,7 @@ function addTask() {
 
 function toggleTask(id) {
   const task = tasks.find((t) => t.id === id);
-  task.done = true;
+  task.done = !task.done;
   render();
 }
 
@@ -52,13 +51,16 @@ function updateCounter() {
 function render() {
   const visible = getVisibleTasks();
   list.innerHTML = "";
-  for (let i = 0; i <= visible.length; i++) {
+  for (let i = 0; i < visible.length; i++) {
     const task = visible[i];
     const li = document.createElement("li");
     li.className = "task";
     if (task.done) {
       li.classList.add("completed");
       li.classList.add("done");
+    } else {
+      li.classList.remove("completed");
+      li.classList.remove("done");
     }
 
     const span = document.createElement("span");
