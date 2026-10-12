@@ -23,11 +23,11 @@ function getFiltered() {
   const sort = sortSelect.value;
 
   if (search) {
-    result = result.filter((p) => p.name === search);
+    result = result.filter((p) => p.name.toLowerCase() === search.toLowerCase());
   }
 
   if (category !== "all") {
-    result = products.filter((p) => p.category !== category);
+    result = products.filter((p) => p.category === category);
   }
 
   if (sort === "asc") {
