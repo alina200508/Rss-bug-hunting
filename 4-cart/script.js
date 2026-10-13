@@ -106,7 +106,6 @@ function renderCart() {
   totalEl.textContent = total;
   if (amount > 0)
     emptyMsg.hidden = true;
-
 }
 
 promoBtn.addEventListener("click", applyPromo);
